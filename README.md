@@ -15,7 +15,7 @@ ZfrPusher is based on modern tools and with a better architecture.
 
 To make this library even more easier to use, here are various libraries:
 
-* [ZfrPusher Module](https://github.com/zf-fr/zfr-pusher-module): this is a Zend Framework 2 module
+* [ZfrPusherModule](https://github.com/zf-fr/zfr-pusher-module): this is a Zend Framework 2 module
 
 Want to do an integration for another framework? Open an issue, and I'll open a repository for you!
 
