@@ -1,0 +1,35 @@
+{
+    "name": "zfr/zfr-pusher",
+    "type": "library",
+    "license": "MIT",
+    "description" : "PHP library for interacting with the Pusher REST API",
+    "keywords": [
+        "pusher",
+        "rest",
+        "real time",
+        "trigger",
+        "publish",
+        "events"
+    ],
+    "homepage": "https://github.com/zfr/zfr-pusher",
+    "authors": [
+        {
+            "name": "Michaël Gallego",
+            "email": "mic.gallego@gmail.com",
+            "homepage": "http://www.michaelgallego.fr"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+        "guzzle/guzzle": ">=3.4,<=3.6"
+    },
+    "autoload": {
+        "psr-0": {
+            "ZfrPusher\\": "src/",
+            "ZfrPusherTest\\": "tests/"
+        },
+        "classmap": [
+            "./"
+        ]
+    }
+}
