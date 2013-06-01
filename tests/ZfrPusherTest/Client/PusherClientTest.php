@@ -66,6 +66,6 @@ class PusherClientTest extends PHPUnit_Framework_TestCase
         $command = $this->client->getCommand('GetChannelsInfo');
         $request = $command->prepare();
         $this->client->dispatch('command.before_send', array('command' => $command));
-        $this->assertRegExp('/^zfr-pusher-php/', $request->getHeader('User-Agent', true));
+        $this->assertRegExp('/^zfr-pusher-php/', (string)$request->getHeader('User-Agent', true));
     }
 }
