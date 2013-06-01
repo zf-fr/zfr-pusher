@@ -62,7 +62,7 @@ class PusherSignature
         $requestPath = $request->getPath();
         $query       = urldecode(http_build_query($queryParameters));
 
-        $signature   = $this->signString(implode(PHP_EOL, array($method, $requestPath, $query)), $credentials);
+        $signature   = $this->signString(implode("\n", array($method, $requestPath, $query)), $credentials);
 
         $queryParameters['auth_signature'] = $signature;
 
