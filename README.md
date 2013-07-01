@@ -1,7 +1,7 @@
 # ZfrPusher, a Pusher PHP Library
 
 [![Build Status](https://travis-ci.org/zf-fr/zfr-pusher.png?branch=master)](https://travis-ci.org/zf-fr/zfr-pusher)
-[![Latest Stable Version](https://poser.pugx.org/zf-fr/zfr-pusher/v/stable.png)](https://packagist.org/packages/zf-fr/zfr-pusher)
+[![Latest Stable Version](https://poser.pugx.org/zfr/zfr-pusher/v/stable.png)](https://packagist.org/packages/zfr/zfr-pusher)
 
 ## Introduction
 
