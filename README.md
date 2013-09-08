@@ -10,7 +10,7 @@ ZfrPusher is based on modern tools and with a better architecture.
 
 ## Dependencies
 
-* [Guzzle library](http://guzzlephp.org): >= 3.4
+* [Guzzle library](http://guzzlephp.org): >= 3.5
 
 ## Integration with frameworks
 
