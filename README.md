@@ -26,7 +26,7 @@ We recommend you to use Composer to install ZfrPusher. Just add the following li
 
 ```json
 {
-    require: {
+    "require": {
         "zfr/zfr-pusher": "1.*"
     }
 }
