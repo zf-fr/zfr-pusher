@@ -174,7 +174,8 @@ return array(
                     'description' => 'Socket identifier to be excluded from receiving the event',
                     'location'    => 'json',
                     'type'        => 'string',
-                    'required'    => false
+                    'required'    => false,
+                    'pattern'     => '/^\d+\.\d+$/'
                 )
             )
         ),
