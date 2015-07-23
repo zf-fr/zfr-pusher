@@ -96,7 +96,7 @@ class PusherService
             $parameters['channels'] = $channels;
         }
 
-        if(isset($socketId)){
+        if(!empty($socketId)){
             $parameters['socket_id'] = $socketId;
         }
 
@@ -124,7 +124,7 @@ class PusherService
      * @param  string        $socketId Exclude a specific socket id from the event
      * @return void
      */
-    public function triggerAsync($channels, $event, array $data = array(), $socketId = '')
+    public function triggerAsync($channels, $event, array $data = array(), $socketId = null)
     {
         $this->trigger($event, $channels, $data, $socketId, true);
     }
