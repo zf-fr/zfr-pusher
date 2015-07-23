@@ -83,18 +83,21 @@ class PusherService
      * @param  bool          $async    If true, the request is performed asynchronously
      * @return void
      */
-    public function trigger($channels, $event, array $data = array(), $socketId = '', $async = false)
+    public function trigger($channels, $event, array $data = array(), $socketId = null, $async = false)
     {
         $parameters = array(
             'event'     => $event,
-            'data'      => $data,
-            'socket_id' => $socketId
+            'data'      => $data
         );
 
         if (is_string($channels)) {
             $parameters['channel'] = $channels;
         } elseif (is_array($channels)) {
             $parameters['channels'] = $channels;
+        }
+
+        if(!empty($socketId)){
+            $parameters['socket_id'] = $socketId;
         }
 
         if ($async) {
@@ -121,7 +124,7 @@ class PusherService
      * @param  string        $socketId Exclude a specific socket id from the event
      * @return void
      */
-    public function triggerAsync($channels, $event, array $data = array(), $socketId = '')
+    public function triggerAsync($channels, $event, array $data = array(), $socketId = null)
     {
         $this->trigger($event, $channels, $data, $socketId, true);
     }

@@ -98,13 +98,49 @@ class PusherServiceTest extends PHPUnit_Framework_TestCase
     /**
      * @covers PusherService::trigger
      */
+    public function testTriggerWithSocketIdEmpty()
+    {
+        $expectedParameters = array(
+            'event'     => 'my-event',
+            'channel'   => 'my-channel',
+            'data'      => array()
+        );
+
+        $this->client->expects($this->once())
+                     ->method('trigger')
+                     ->with($expectedParameters);
+
+        $this->service->trigger('my-channel', 'my-event', array(), '');
+    }
+
+    /**
+     * @covers PusherService::trigger
+     */
+    public function testTriggerWithSocketId()
+    {
+        $expectedParameters = array(
+            'event'      => 'my-event',
+            'channel'    => 'my-channel',
+            'data'       => array(),
+            'socket_id'  => '123.123'
+        );
+
+        $this->client->expects($this->once())
+                     ->method('trigger')
+                     ->with($expectedParameters);
+
+        $this->service->trigger('my-channel', 'my-event', array(), '123.123');
+    }
+
+    /**
+     * @covers PusherService::trigger
+     */
     public function testTriggerUseChannelIfString()
     {
         $expectedParameters = array(
             'event'     => 'my-event',
             'channel'   => 'my-channel',
-            'data'      => array(),
-            'socket_id' => ''
+            'data'      => array()
         );
 
         $this->client->expects($this->once())
@@ -122,8 +158,7 @@ class PusherServiceTest extends PHPUnit_Framework_TestCase
         $expectedParameters = array(
             'event'     => 'my-event',
             'channels'  => array('my-channel-1', 'my-channel-2'),
-            'data'      => array(),
-            'socket_id' => ''
+            'data'      => array()
         );
 
         $this->client->expects($this->once())
