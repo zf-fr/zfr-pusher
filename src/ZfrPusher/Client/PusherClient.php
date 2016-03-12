@@ -69,8 +69,8 @@ class PusherClient extends Client
      */
     public function __construct(Credentials $credentials)
     {
-        if (!in_array($credentials->getCluster(), self::CLUSTERS)) {
-            $clusters = array_keys(self::CLUSTERS);
+        if (!array_key_exists($credentials->getCluster(), self::CLUSTERS)) {
+            $clusters = implode(', ', array_keys(self::CLUSTERS));
             throw new UnknownClusterException(sprintf('Unknown cluster specified. Must be one of: %s', $clusters));
         }
         
