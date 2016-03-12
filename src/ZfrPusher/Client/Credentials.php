@@ -41,17 +41,22 @@ class Credentials
      */
     protected $secret;
 
+    /**
+     * @var string
+     */
+    protected $cluster;
 
     /**
      * @param int    $appId
      * @param string $key
      * @param string $secret
      */
-    public function __construct($appId, $key, $secret)
+    public function __construct($appId, $key, $secret, $cluster = 'us')
     {
-        $this->appId  = (int) $appId;
-        $this->key    = (string) $key;
-        $this->secret = (string) $secret;
+        $this->appId   = (int) $appId;
+        $this->key     = (string) $key;
+        $this->secret  = (string) $secret;
+        $this->cluster = (string) $cluster;
     }
 
     /**
@@ -82,5 +87,15 @@ class Credentials
     public function getSecret()
     {
         return $this->secret;
+    }
+
+    /**
+     * Get the cluster(region)
+     * 
+     * @return string
+     */
+    public function getCluster()
+    {
+        return $this->cluster;
     }
 }
