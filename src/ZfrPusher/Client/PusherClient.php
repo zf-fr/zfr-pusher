@@ -21,6 +21,7 @@ namespace ZfrPusher\Client;
 use Guzzle\Service\Client;
 use Guzzle\Service\Description\ServiceDescription;
 use Guzzle\Service\Resource\Model;
+use ZfrPusher\Client\Exception\UnknownClusterException;
 use ZfrPusher\Client\Listener\SignatureListener;
 use ZfrPusher\Version;
 
@@ -43,6 +44,15 @@ class PusherClient extends Client
     const LATEST_API_VERSION = '1.0';
 
     /**
+     * List of Pusher clusters
+     */
+    const CLUSTERS = array(
+        'us' => 'https://api.pusherapp.com',
+        'eu' => 'https://api-eu.pusher.com',
+        'ap' => 'https://api-ap1.pusher.com'
+    );
+
+    /**
      * @var Credentials
      */
     protected $credentials;
@@ -59,6 +69,11 @@ class PusherClient extends Client
      */
     public function __construct(Credentials $credentials)
     {
+        if (!array_key_exists($credentials->getCluster(), self::CLUSTERS)) {
+            $clusters = implode(', ', array_keys(self::CLUSTERS));
+            throw new UnknownClusterException(sprintf('Unknown cluster specified. Must be one of: %s', $clusters));
+        }
+        
         // Make sure we always have the app_id parameter as default
         parent::__construct('', array(
             'command.params' => array(
@@ -75,6 +90,8 @@ class PusherClient extends Client
 
         // Prefix the User-Agent by SDK version
         $this->setUserAgent('zfr-pusher-php/' . Version::VERSION, true);
+
+        $this->setBaseUrl(self::CLUSTERS[$credentials->getCluster()]);
 
         // Add a listener to sign each requests
         $this->signature = new PusherSignature();

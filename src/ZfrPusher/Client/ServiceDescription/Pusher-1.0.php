@@ -20,7 +20,7 @@
 return array(
     'name'        => 'Pusher',
     'apiVersion'  => '1.0',
-    'baseUrl'     => 'https://api.pusherapp.com',
+    'baseUrl'     => '', // this is set from cluster configuration in PusherClient.php
     'description' => 'Pusher is a service that brings real-timeness to your web applications',
     'operations'  => array(
         'GetChannelInfo' => array(
